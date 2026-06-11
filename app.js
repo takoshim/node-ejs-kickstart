@@ -18,20 +18,26 @@ app.use(express.static(__dirname + '/public'));
 
 //index/home URL
 app.get('/',(req,res)=>{
-    let title = "Home Page";
+    let title = "About Bing Images";
     res.render('pages/index',{'title': title});
 });
 
-//about URL
-app.get('/about',(req,res)=>{
-    let title = "About Page";
-    res.render('pages/about',{'title': title});
+//elephant URL
+app.get('/elephant',(req,res)=>{
+    let title = "about Elephant";
+    res.render('pages/elephant',{'title': title});
 });
 
-//contact URL
-app.get('/contact',(req,res)=>{
-    let title = "Contact";
-    res.render('pages/contact',{'title': title});
+//catsle URL
+app.get('/castle',(req,res)=>{
+    let title = "about Catsle";
+    res.render('pages/castle',{'title': title});
+});
+
+//seals URL
+app.get('/seals',(req,res)=>{
+    let title = "about Seals";
+    res.render('pages/seals',{'title': title});
 });
 
 // ==========================================
