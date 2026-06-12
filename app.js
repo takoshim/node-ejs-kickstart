@@ -19,14 +19,35 @@ app.get('/',(req,res)=>{
     res.render('pages/index',{'title': title});
 });
 
-//about URL
-app.get('/about',(req,res)=>{
-    let title = "About Page";
-    res.render('pages/about',{'title': title});
+// Load user data file from the data folder
+const userData = require('./data/test.json');
+
+// ==========================================
+// 👥 NEW ROUTE: The User Directory (The List)
+// ==========================================
+app.get('/users', (req, res) => {
+    res.render('users/index', {
+        title: 'User Directory',
+        users: userData // Passes the 100-user array to the template
+    });
+});
+
+// ==========================================
+// 🔍 NEW ROUTE: Individual Profile (The View)
+// ==========================================
+app.get('/users/view/:id', (req, res) => {
+    let id = req.params.id;
+
+    // We cheat elegantly by subtracting 1 to match array zero-indexing
+    res.render('users/view', {
+        title: 'User Profile',
+        user: userData[--id]
+    });
 });
 
 //Set server to listen for requests
 app.listen(port, () => {
   console.log(`Server running at port: ${port}`);
 });
+
 
